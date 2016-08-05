@@ -1,1 +1,13 @@
 ---
+
+# Variable setup.
+- name: "Include OS-Specific variables for {{ ansible_os_family }}"
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Define gbs_repo_url
+  set_fact:
+    gbs_repo_url: "{{ __gbs_repo_url }}"
+  when: gbs_repo_url is not defined
+
+- name: " OS-Specific package install for {{ ansible_os_family }}"
+  include: "install-{{ ansible_os_family }}.yml"

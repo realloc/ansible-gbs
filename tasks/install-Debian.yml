@@ -1,0 +1,14 @@
+---
+- name: Add Tizen Tools repository
+  apt_repository:
+    repo: "{{ gbs_repo_url }}"
+    state: present
+    filename: 'tizen_gbs'
+    update_cache: true
+
+- name: Install GBS tools
+  apt:
+    name: "{{ item }}"
+    allow_unauthenticated: true
+    state: latest
+  with_items: "{{ gbs_package_list }}"

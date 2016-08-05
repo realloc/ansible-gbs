@@ -1,0 +1,6 @@
+---
+
+__gbs_repo_url: "deb http://download.tizen.org/tools/latest-release/{{ ansible_distribution }}_{{ ansible_distribution_version }} /"
+gbs_package_list:
+  - gbs
+  - mic
